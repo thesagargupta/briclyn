@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-error-container: #ffdad6;
+  --color-tertiary-container: #303335;
+  --color-on-tertiary-fixed-variant: #444749;
+  --color-primary: #001f36;
+  --color-tertiary: #1b1e20;
+  --color-secondary-container: #fe762c;
+  --color-tertiary-fixed-dim: #c5c7c8;
+  --color-surface-container-highest: #d8e3fb;
+  --color-on-error: #ffffff;
+  --color-on-tertiary: #ffffff;
+  --color-secondary-fixed-dim: #ffb695;
+  --color-text-muted: #64748B;
+  --color-on-background: #111c2d;
+  --color-inverse-primary: #a7caef;
+  --color-border-subtle: #E2E8F0;
+  --color-on-primary-fixed: #001d33;
+  --color-surface-main: #ffffff;
+  --color-primary-container: #0b3553;
+  --color-on-secondary-container: #5f2200;
+  --color-primary-fixed: #cee5ff;
+  --color-on-surface-variant: #42474d;
+  --color-error: #ba1a1a;
+  --color-on-primary-fixed-variant: #254a69;
+  --color-surface-tint: #3e6182;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-surface: #111c2d;
+  --color-on-secondary-fixed-variant: #7b2f00;
+  --color-surface-dim: #cfdaf2;
+  --color-on-primary-container: #7b9ec1;
+  --color-tertiary-fixed: #e1e2e4;
+  --color-secondary: #a24000;
+  --color-surface-variant: #d8e3fb;
+  --color-surface-container: #e7eeff;
+  --color-on-secondary-fixed: #351000;
+  --color-surface-container-high: #dee8ff;
+  --color-on-secondary: #ffffff;
+  --color-on-primary: #ffffff;
+  --color-background: #f9f9ff;
+  --color-surface-alt: #F7F8FA;
+  --color-outline-variant: #c2c7ce;
+  --color-secondary-fixed: #ffdbcc;
+  --color-outline: #73777e;
+  --color-on-tertiary-fixed: #191c1e;
+  --color-surface: #f9f9ff;
+  --color-on-tertiary-container: #999b9d;
+  --color-on-error-container: #93000a;
+  --color-primary-fixed-dim: #a7caef;
+  --color-surface-container-low: #f0f3ff;
+  --color-inverse-surface: #263143;
+  --color-surface-bright: #f9f9ff;
+  --color-inverse-on-surface: #ecf1ff;
+
+  --spacing-base: 4px;
+  --spacing-container-max: 1280px;
+  --spacing-xs: 8px;
+  --spacing-md: 24px;
+  --spacing-sm: 16px;
+  --spacing-lg: 48px;
+  --spacing-xl: 80px;
+  --spacing-gutter: 24px;
+
+  --font-label-md: var(--font-inter);
+  --font-headline-md: var(--font-manrope);
+  --font-headline-lg: var(--font-manrope);
+  --font-display-lg: var(--font-manrope);
+  --font-label-sm: var(--font-inter);
+  --font-body-md: var(--font-inter);
+  --font-headline-lg-mobile: var(--font-manrope);
+  --font-body-lg: var(--font-inter);
+
+  --text-label-md: 14px;
+  --text-label-md--line-height: 20px;
+  --text-label-md--letter-spacing: 0.01em;
+  --text-label-md--font-weight: 600;
+
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 32px;
+  --text-headline-md--font-weight: 600;
+
+  --text-headline-lg: 32px;
+  --text-headline-lg--line-height: 40px;
+  --text-headline-lg--letter-spacing: -0.01em;
+  --text-headline-lg--font-weight: 700;
+
+  --text-display-lg: 48px;
+  --text-display-lg--line-height: 56px;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 800;
+
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 16px;
+  --text-label-sm--letter-spacing: 0.02em;
+  --text-label-sm--font-weight: 500;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
+  --text-body-md--font-weight: 400;
+
+  --text-headline-lg-mobile: 24px;
+  --text-headline-lg-mobile--line-height: 32px;
+  --text-headline-lg-mobile--font-weight: 700;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-body-lg--font-weight: 400;
+
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-background text-on-background font-body-md antialiased;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Material Icons Setup */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
 }
