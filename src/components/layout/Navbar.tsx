@@ -1,69 +1,79 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/services", label: "Services" },
+  { href: "/industries", label: "Industries" },
+  { href: "/projects", label: "Projects" },
+  { href: "/careers", label: "Careers" },
+  { href: "/blog", label: "Blog" },
+];
 
 export function Navbar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
-    <header className="bg-surface-main dark:bg-inverse-surface border-b border-border-subtle dark:border-outline-variant shadow-sm w-full sticky top-0 z-50">
-      <div className="flex justify-between items-center px-6 lg:px-8 py-4">
-        <div className="flex items-center gap-4">
-          <Link href="/">
-            <img
-              alt="BrickLyn Logo"
-              className="h-10 object-contain"
-              src="/logo.png"
-            />
-          </Link>
-        </div>
+    <header className="bg-surface-main border-b border-border-subtle shadow-sm w-full sticky top-0 z-50">
+      <div className="max-w-[1280px] mx-auto flex justify-between items-center px-6 lg:px-8 py-3">
+        {/* Logo */}
+        <Link href="/" className="flex items-center shrink-0">
+          <img
+            alt="BrickLyn Logo"
+            className="h-15 w-40"
+            src="/logo.png"
+          />
+        </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
-          <Link className="font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="/">Home</Link>
-          <Link className="font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="/about">About Us</Link>
-          <Link className="font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="/services">Services</Link>
-          <Link className="font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="/industries">Industries</Link>
-          <Link className="font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="/projects">Projects</Link>
-          <Link className="font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="/careers">Careers</Link>
-          <Link className="font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="/blog">Blog</Link>
+        <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
+          {navItems.map((item) => {
+            const isActive =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname === item.href || pathname.startsWith(item.href + "/");
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`relative px-3 py-2 rounded-lg font-label-md text-label-md transition-colors ${
+                  isActive
+                    ? "text-primary-container font-semibold"
+                    : "text-on-surface-variant hover:text-primary-container hover:bg-surface-alt"
+                }`}
+              >
+                {item.label}
+                {isActive && (
+                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#D95B0D]" aria-hidden="true" />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
+        {/* Desktop CTA */}
         <div className="hidden md:flex items-center">
-          <Link href="/contact" className="bg-[#D95B0D] hover:bg-[#c4520b] text-white px-6 py-2 rounded-lg font-label-md text-label-md transition-colors shadow-sm inline-block">
+          <Link
+            href="/contact"
+            className="bg-[#D95B0D] hover:bg-[#c4520b] text-white px-5 py-2 rounded-lg font-label-md text-label-md transition-colors shadow-sm"
+          >
             Contact Us
           </Link>
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="md:hidden text-on-surface p-2"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          <span className="material-symbols-outlined text-2xl">
-            {isMobileMenuOpen ? 'close' : 'menu'}
-          </span>
-        </button>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-surface-main border-t border-border-subtle absolute w-full left-0 top-full shadow-lg">
-          <nav className="flex flex-col py-4 px-6 space-y-4">
-            <Link onClick={() => setIsMobileMenuOpen(false)} className="font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="/">Home</Link>
-            <Link onClick={() => setIsMobileMenuOpen(false)} className="font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="/about">About Us</Link>
-            <Link onClick={() => setIsMobileMenuOpen(false)} className="font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="/services">Services</Link>
-            <Link onClick={() => setIsMobileMenuOpen(false)} className="font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="/industries">Industries</Link>
-            <Link onClick={() => setIsMobileMenuOpen(false)} className="font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="/projects">Projects</Link>
-            <Link onClick={() => setIsMobileMenuOpen(false)} className="font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="/careers">Careers</Link>
-            <Link onClick={() => setIsMobileMenuOpen(false)} className="font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="/blog">Blog</Link>
-            <Link onClick={() => setIsMobileMenuOpen(false)} href="/contact" className="bg-[#D95B0D] hover:bg-[#c4520b] text-white px-6 py-2 rounded-lg font-label-md text-label-md transition-colors shadow-sm inline-block text-center mt-4">
-              Contact Us
-            </Link>
-          </nav>
+        {/* Mobile CTA — hamburger removed, bottom nav handles mobile navigation */}
+        <div className="md:hidden">
+          <Link
+            href="/contact"
+            className="bg-[#D95B0D] hover:bg-[#c4520b] text-white px-4 py-2 rounded-lg font-label-md text-[13px] leading-5 transition-colors shadow-sm"
+          >
+            Get Quote
+          </Link>
         </div>
-      )}
+      </div>
     </header>
   );
 }

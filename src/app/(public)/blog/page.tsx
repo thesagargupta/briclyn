@@ -219,7 +219,7 @@ export default function BlogPage() {
             </form>
             <p className="font-label-sm text-[11px] text-surface-container-highest/50 mt-4 text-center">
               By subscribing, you agree to our{" "}
-              <a className="underline hover:text-surface-main transition-colors" href="#">
+              <a className="underline hover:text-surface-main transition-colors" href="/privacy-policy">
                 Privacy Policy
               </a>
               .

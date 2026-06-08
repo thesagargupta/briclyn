@@ -1,123 +1,179 @@
 import Link from "next/link";
-import Image from "next/image";
+
+const quickLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/industries", label: "Industries" },
+  { href: "/projects", label: "Projects" },
+  { href: "/careers", label: "Careers" },
+  { href: "/blog", label: "Blog" },
+];
+
+const serviceLinks = [
+  { href: "/services", label: "Construction Workforce" },
+  { href: "/services", label: "Engineering Staff" },
+  { href: "/services", label: "Security Services" },
+  { href: "/services", label: "Facility Management" },
+  { href: "/services", label: "HR Outsourcing" },
+];
 
 export function Footer() {
   return (
-    <footer className="bg-surface-alt border-t border-border-subtle pt-16 pb-8 px-6 lg:px-8 mt-auto">
-      <div className="max-w-[1280px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-          <div className="col-span-1 md:col-span-12 lg:col-span-4 flex flex-col gap-6">
-            <Link href="/">
+    <footer className="bg-surface-alt border-t border-border-subtle pb-24 md:pb-0">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-10 pb-6">
+        {/* Main Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          {/* Company Column */}
+          <div className="flex flex-col gap-4">
+            <Link href="/" aria-label="BrickLyn home">
               <img
                 alt="BrickLyn Logo"
-                className="h-12 object-contain"
+                className="h-15 w-40"
                 src="/logo.png"
               />
             </Link>
-            <p className="font-body-md text-body-md text-on-surface-variant text-sm">
-              Providing skilled, semi-skilled, and unskilled workforce across
-              India with scalable solutions for global expansion. Brick by brick,
-              line by line.
+            <p className="text-sm text-on-surface-variant leading-relaxed">
+              Providing skilled, semi-skilled, and unskilled workforce across India. Brick by brick, line by line.
             </p>
-          </div>
-          <div>
-            <h4 className="font-headline-md text-headline-md text-primary-container text-lg mb-4">
-              Quick Links
-            </h4>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container transition-colors text-sm"
-                  href="/"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container transition-colors text-sm"
-                  href="/services"
-                >
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="font-body-md text-body-md text-on-surface-variant hover:text-primary-container transition-colors text-sm"
-                  href="/industries"
-                >
-                  Industries
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-headline-md text-headline-md text-primary-container text-lg mb-4">
-              Contact Info
-            </h4>
-            <ul className="space-y-2">
-              <li className="flex items-center gap-2 font-body-md text-body-md text-on-surface-variant text-sm">
-                <span className="material-symbols-outlined text-base">
-                  call
-                </span>{" "}
-                +91 123 456 7890
-              </li>
-              <li className="flex items-center gap-2 font-body-md text-body-md text-on-surface-variant text-sm">
-                <span className="material-symbols-outlined text-base">
-                  mail
-                </span>{" "}
-                info@bricklyn.com
-              </li>
-              <li className="flex items-center gap-2 font-body-md text-body-md text-on-surface-variant text-sm">
-                <span className="material-symbols-outlined text-base">
-                  location_on
-                </span>{" "}
-                New Delhi, India
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-headline-md text-headline-md text-primary-container text-lg mb-4">
-              Follow Us
-            </h4>
-            <div className="flex items-center gap-4">
-              <Link
-                className="text-on-surface-variant hover:text-primary-container transition-colors"
+            <div className="flex items-center gap-3 mt-1">
+              {/* LinkedIn */}
+              <a
                 href="#"
+                aria-label="LinkedIn"
+                className="w-8 h-8 rounded-lg bg-surface-main border border-border-subtle flex items-center justify-center text-on-surface-variant hover:text-primary-container hover:border-primary-container transition-colors"
               >
-                <span className="material-symbols-outlined">language</span>
-              </Link>
-              <Link
-                className="text-on-surface-variant hover:text-primary-container transition-colors"
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+              </a>
+              {/* X / Twitter */}
+              <a
                 href="#"
+                aria-label="X (Twitter)"
+                className="w-8 h-8 rounded-lg bg-surface-main border border-border-subtle flex items-center justify-center text-on-surface-variant hover:text-primary-container hover:border-primary-container transition-colors"
               >
-                <span className="material-symbols-outlined">share</span>
-              </Link>
-              <Link
-                className="text-on-surface-variant hover:text-primary-container transition-colors"
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </a>
+              {/* Facebook */}
+              <a
                 href="#"
+                aria-label="Facebook"
+                className="w-8 h-8 rounded-lg bg-surface-main border border-border-subtle flex items-center justify-center text-on-surface-variant hover:text-primary-container hover:border-primary-container transition-colors"
               >
-                <span className="material-symbols-outlined">thumb_up</span>
-              </Link>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </a>
             </div>
           </div>
+
+          {/* Quick Links Column */}
+          <div>
+            <h4 className="text-sm font-semibold text-on-surface uppercase tracking-wider mb-4">
+              Company
+            </h4>
+            <ul className="space-y-2.5">
+              {quickLinks.map((link) => (
+                <li key={link.href + link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-on-surface-variant hover:text-primary-container transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services Column */}
+          <div>
+            <h4 className="text-sm font-semibold text-on-surface uppercase tracking-wider mb-4">
+              Services
+            </h4>
+            <ul className="space-y-2.5">
+              {serviceLinks.map((link, i) => (
+                <li key={i}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-on-surface-variant hover:text-primary-container transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Column */}
+          <div>
+            <h4 className="text-sm font-semibold text-on-surface uppercase tracking-wider mb-4">
+              Contact
+            </h4>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="tel:+911234567890"
+                  className="flex items-start gap-2.5 text-sm text-on-surface-variant hover:text-primary-container transition-colors group"
+                >
+                  <span className="material-symbols-outlined text-[16px] mt-0.5 shrink-0 text-[#D95B0D]" aria-hidden="true">
+                    call
+                  </span>
+                  +91 123 456 7890
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:info@bricklyn.com"
+                  className="flex items-start gap-2.5 text-sm text-on-surface-variant hover:text-primary-container transition-colors group"
+                >
+                  <span className="material-symbols-outlined text-[16px] mt-0.5 shrink-0 text-[#D95B0D]" aria-hidden="true">
+                    mail
+                  </span>
+                  info@bricklyn.com
+                </a>
+              </li>
+              <li className="flex items-start gap-2.5 text-sm text-on-surface-variant">
+                <span className="material-symbols-outlined text-[16px] mt-0.5 shrink-0 text-[#D95B0D]" aria-hidden="true">
+                  location_on
+                </span>
+                Faridabad, Haryana, India
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="border-t border-border-subtle pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-body-md text-body-md text-on-surface-variant text-sm">
-            © 2024 BrickLyn Infra Solutions Pvt Ltd. All rights reserved.
+
+        {/* Bottom Bar */}
+        <div className="border-t border-border-subtle pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="text-sm text-on-surface-variant order-2 sm:order-1">
+            © 2025 BrickLyn Infra Solutions Pvt Ltd. All rights reserved.
           </p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap justify-center sm:justify-end gap-x-5 gap-y-2 order-1 sm:order-2">
             <Link
               href="/privacy-policy"
-              className="text-sm text-on-surface-variant hover:text-primary-container"
+              className="text-sm text-on-surface-variant hover:text-primary-container transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms-and-conditions"
-              className="text-sm text-on-surface-variant hover:text-primary-container"
+              className="text-sm text-on-surface-variant hover:text-primary-container transition-colors"
             >
               Terms & Conditions
+            </Link>
+            <Link
+              href="/faq"
+              className="text-sm text-on-surface-variant hover:text-primary-container transition-colors"
+            >
+              FAQ
+            </Link>
+            <Link
+              href="/contact"
+              className="text-sm text-on-surface-variant hover:text-primary-container transition-colors"
+            >
+              Contact Us
             </Link>
           </div>
         </div>

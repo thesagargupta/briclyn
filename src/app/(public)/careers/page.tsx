@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 
 export default function CareersPage() {
@@ -50,14 +51,14 @@ export default function CareersPage() {
             site management, and rigorous safety protocols.
           </p>
           <div className="flex items-center gap-4 mt-4">
-            <Button>View Open Roles</Button>
+            <Button href="#open-positions">View Open Roles</Button>
           </div>
         </div>
           <div className="relative h-[300px] md:h-auto rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(11,53,83,0.05)] border border-border-subtle group">
             <img
               alt="Construction Worker"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              src="https://picsum.photos/seed/bricklyn9/1600/900"
+              src="/career-hero.webp"
             />
         </div>
       </section>
@@ -135,7 +136,7 @@ export default function CareersPage() {
       </section>
 
       {/* Open Positions List */}
-      <section className="flex flex-col gap-6">
+      <section id="open-positions" className="flex flex-col gap-6">
         <div className="flex justify-between items-end border-b border-border-subtle pb-4">
           <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">
             Open Positions
@@ -181,12 +182,15 @@ export default function CareersPage() {
                   </div>
                 </div>
               </div>
-              <button className="w-full bg-surface-main border-2 border-primary text-primary font-label-md text-label-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-white transition-colors flex justify-center items-center gap-2">
+              <Link
+                href="/contact"
+                className="w-full bg-surface-main border-2 border-primary text-primary font-label-md text-label-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-white transition-colors flex justify-center items-center gap-2"
+              >
                 Apply Now
-                <span className="material-symbols-outlined text-[18px]">
+                <span className="material-symbols-outlined text-[18px]" aria-hidden="true">
                   arrow_forward
                 </span>
-              </button>
+              </Link>
             </div>
           ))}
         </div>
@@ -283,12 +287,15 @@ export default function CareersPage() {
           infrastructure network. Submit your resume, and our recruitment team
           will match you with future opportunities.
         </p>
-        <button className="bg-secondary text-white font-label-md text-label-md px-8 py-4 rounded-lg hover:bg-secondary-container transition-colors shadow-sm flex items-center gap-2 uppercase tracking-wide">
+        <Link
+          href="/contact"
+          className="bg-secondary text-white font-label-md text-label-md px-8 py-4 rounded-lg hover:bg-secondary-container transition-colors shadow-sm flex items-center gap-2 uppercase tracking-wide"
+        >
           Upload Resume
-          <span className="material-symbols-outlined text-[20px]">
+          <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
             cloud_upload
           </span>
-        </button>
+        </Link>
       </section>
     </main>
   );
