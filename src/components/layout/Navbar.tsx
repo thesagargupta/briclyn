@@ -18,15 +18,20 @@ export function Navbar() {
 
   return (
     <header className="bg-surface-main border-b border-border-subtle shadow-sm w-full sticky top-0 z-50">
-      <div className="max-w-[1280px] mx-auto flex justify-between items-center px-6 lg:px-8 py-3">
-        {/* Logo */}
-        <Link href="/" className="flex items-center shrink-0">
+      {/* FIX 1: Replaced `py-3` with a fixed height `h-[72px]` to lock navbar size */}
+      <div className="max-w-[1280px] mx-auto flex justify-between items-center px-6 lg:px-8 h-[72px]">
+
+        <div className="relative h-20 w-30 sm:h-24 sm:w-24 md:h-32 md:w-32 shrink-0 overflow-hidden flex items-center justify-center">
+          {/* Image: Scaled up to remove whitespace */}
+          <Link href="/" aria-label="BrickLyn home">
           <img
-            alt="BrickLyn Logo"
-            className="h-15 w-40"
             src="/logo.png"
+            alt="Bricklyn Logo"
+            className="w-full h-full object-contain scale-[1.6]"
+            loading="eager"
           />
-        </Link>
+          </Link>
+        </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
@@ -39,11 +44,10 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative px-3 py-2 rounded-lg font-label-md text-label-md transition-colors ${
-                  isActive
-                    ? "text-primary-container font-semibold"
-                    : "text-on-surface-variant hover:text-primary-container hover:bg-surface-alt"
-                }`}
+                className={`relative px-3 py-2 rounded-lg font-label-md text-label-md transition-colors ${isActive
+                  ? "text-primary-container font-semibold"
+                  : "text-on-surface-variant hover:text-primary-container hover:bg-surface-alt"
+                  }`}
               >
                 {item.label}
                 {isActive && (
@@ -64,7 +68,7 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile CTA — hamburger removed, bottom nav handles mobile navigation */}
+        {/* Mobile CTA */}
         <div className="md:hidden">
           <Link
             href="/contact"

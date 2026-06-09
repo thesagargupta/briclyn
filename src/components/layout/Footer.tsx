@@ -25,13 +25,17 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Column */}
           <div className="flex flex-col gap-4">
-            <Link href="/" aria-label="BrickLyn home">
-              <img
-                alt="BrickLyn Logo"
-                className="h-15 w-40"
-                src="/logo.png"
-              />
-            </Link>
+        <div className="relative h-20 w-30 sm:h-24 sm:w-24 md:h-32 md:w-32 shrink-0 overflow-hidden flex items-center justify-center">
+          {/* Image: Scaled up to remove whitespace */}
+          <Link href="/" aria-label="BrickLyn home">
+          <img
+            src="/logo.png"
+            alt="Bricklyn Logo"
+            className="w-full h-full object-contain scale-[1.6]"
+            loading="eager"
+          />
+          </Link>
+        </div>
             <p className="text-sm text-on-surface-variant leading-relaxed">
               Providing skilled, semi-skilled, and unskilled workforce across India. Brick by brick, line by line.
             </p>
