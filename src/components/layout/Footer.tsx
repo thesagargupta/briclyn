@@ -18,24 +18,27 @@ const serviceLinks = [
 ];
 
 export function Footer() {
+  // Get the current year dynamically
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-surface-alt border-t border-border-subtle pb-24 md:pb-0">
+    <footer className="bg-surface-alt border-t border-border-subtle pb-20 md:pb-0">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8 pt-10 pb-6">
         {/* Main Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Column */}
           <div className="flex flex-col gap-4">
-        <div className="relative h-20 w-30 sm:h-24 sm:w-24 md:h-32 md:w-32 shrink-0 overflow-hidden flex items-center justify-center">
-          {/* Image: Scaled up to remove whitespace */}
-          <Link href="/" aria-label="BrickLyn home">
-          <img
-            src="/logo.png"
-            alt="Bricklyn Logo"
-            className="w-full h-full object-contain scale-[1.6]"
-            loading="eager"
-          />
-          </Link>
-        </div>
+            <div className="relative h-20 w-30 sm:h-24 sm:w-24 md:h-32 md:w-32 shrink-0 overflow-hidden flex items-center justify-center">
+              {/* Image: Scaled up to remove whitespace */}
+              <Link href="/" aria-label="BrickLyn home">
+                <img
+                  src="/logo.png"
+                  alt="Bricklyn Logo"
+                  className="w-full h-full object-contain scale-[1.6]"
+                  loading="eager"
+                />
+              </Link>
+            </div>
             <p className="text-sm text-on-surface-variant leading-relaxed">
               Providing skilled, semi-skilled, and unskilled workforce across India. Brick by brick, line by line.
             </p>
@@ -151,9 +154,13 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-border-subtle pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-sm text-on-surface-variant order-2 sm:order-1">
-            © 2025 BrickLyn Infra Solutions Pvt Ltd. All rights reserved.
+          
+          {/* UPDATED COPYRIGHT SECTION */}
+          <p className="text-sm text-on-surface-variant order-2 sm:order-1 text-center sm:text-left">
+            © {currentYear} BrickLyn Infra Solutions Pvt Ltd. <br />
+            All rights reserved.
           </p>
+
           <div className="flex flex-wrap justify-center sm:justify-end gap-x-5 gap-y-2 order-1 sm:order-2">
             <Link
               href="/privacy-policy"

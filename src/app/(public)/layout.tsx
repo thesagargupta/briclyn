@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { BottomNav } from "@/components/layout/BottomNav";
-import { ScrollToTop } from "@/components/ui/ScrollToTop";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
 export default function PublicLayout({
   children,
@@ -14,7 +14,7 @@ export default function PublicLayout({
       {children}
       <Footer />
       <BottomNav />
-      <ScrollToTop />
+      <WhatsAppButton />
     </>
   );
 }
