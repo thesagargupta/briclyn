@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/Button";
+import { CountUp } from "@/components/ui/CountUp";
+import { FadeIn } from "@/components/ui/FadeIn";
 import Link from "next/link";
 
 export default function AboutPage() {
@@ -71,19 +73,19 @@ export default function AboutPage() {
         <section className="bg-surface-alt rounded-xl border border-border-subtle p-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
-              { value: "12+", label: "Years of Experience" },
-              { value: "5000+", label: "Workforce Deployed" },
-              { value: "150+", label: "Enterprise Clients" },
-              { value: "25+", label: "Cities Covered" },
+              { end: 12,   suffix: "+", label: "Years of Experience" },
+              { end: 5000, suffix: "+", label: "Workforce Deployed" },
+              { end: 150,  suffix: "+", label: "Enterprise Clients" },
+              { end: 25,   suffix: "+", label: "Cities Covered" },
             ].map((stat, i) => (
-              <div key={i} className="flex flex-col gap-1">
+              <FadeIn key={i} delay={i * 80} className="flex flex-col gap-1">
                 <div className="text-[28px] sm:text-[36px] font-extrabold text-primary-container leading-none font-display-lg">
-                  {stat.value}
+                  <CountUp end={stat.end} suffix={stat.suffix} />
                 </div>
                 <div className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
                   {stat.label}
                 </div>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </section>
