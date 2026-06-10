@@ -28,7 +28,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Column */}
           <div className="flex flex-col gap-4">
-            <div className="relative h-20 w-30 sm:h-24 sm:w-24 md:h-32 md:w-32 shrink-0 overflow-hidden flex items-center justify-center">
+            <div className="relative h-20 w-34 sm:h-24 sm:w-24 md:h-32 md:w-32 shrink-0 overflow-hidden flex items-center justify-center">
               {/* Image: Scaled up to remove whitespace */}
               <Link href="/" aria-label="BrickLyn home">
                 <img
@@ -154,7 +154,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-border-subtle pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
-          
+
           {/* UPDATED COPYRIGHT SECTION */}
           <p className="text-sm text-on-surface-variant order-2 sm:order-1 text-center sm:text-left">
             © {currentYear} BrickLyn Infra Solutions Pvt Ltd. <br />

@@ -1,38 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-
-const industries = [
-  {
-    icon: "architecture",
-    title: "Construction",
-    desc: "Heavy civil, commercial, and residential construction demands a resilient workforce. We supply certified operators, skilled trades, and general labor to keep sites moving safely and on schedule.",
-  },
-  {
-    icon: "engineering",
-    title: "Infrastructure",
-    desc: "From highway systems to utility networks, infrastructure requires large-scale coordination. Our teams are experienced in complex, long-term public and private works projects.",
-  },
-  {
-    icon: "precision_manufacturing",
-    title: "Manufacturing",
-    desc: "Precision and consistency define the factory floor. We provide trained assembly line workers, quality control specialists, and machinery operators to maintain high throughput and safety standards.",
-  },
-  {
-    icon: "warehouse",
-    title: "Warehousing",
-    desc: "Efficient distribution centers rely on speed and accuracy. Our warehouse personnel, including forklift drivers and inventory clerks, are vetted for reliability in fast-paced environments.",
-  },
-  {
-    icon: "local_shipping",
-    title: "Logistics",
-    desc: "Keeping supply chains intact requires a dedicated logistical workforce. We supply fleet managers, loaders, and coordinators to ensure materials reach their destination without delay.",
-  },
-  {
-    icon: "local_hospital",
-    title: "Healthcare Facilities",
-    desc: "Supporting the operation of medical centers requires specialized facility management staff. We provide maintenance technicians, environmental service workers, and security personnel trained for sensitive environments.",
-  },
-];
+import { industryCategories } from "@/lib/data/industries";
 
 export default function IndustriesPage() {
   return (
@@ -77,12 +45,12 @@ export default function IndustriesPage() {
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {industries.map((industry, index) => (
+          {industryCategories.map((industry) => (
             <div
-              key={index}
+              key={industry.id}
               className="bg-surface-main rounded-xl border border-border-subtle p-6 flex flex-col gap-4 shadow-[0_4px_12px_rgba(11,53,83,0.05)] hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(11,53,83,0.08)] transition-all duration-300 group"
             >
-              <div className="w-12 h-12 rounded-lg bg-surface-alt flex items-center justify-center text-primary-container border border-border-subtle">
+              <div className="w-12 h-12 rounded-lg bg-surface-alt flex items-center justify-center text-primary-container border border-border-subtle group-hover:bg-[#D95B0D]/10 group-hover:text-[#D95B0D] group-hover:border-[#D95B0D]/20 transition-colors">
                 <span
                   className="material-symbols-outlined text-[24px]"
                   style={{ fontVariationSettings: "'FILL' 1" }}
@@ -91,18 +59,18 @@ export default function IndustriesPage() {
                   {industry.icon}
                 </span>
               </div>
-              <h3 className="font-headline-md text-[18px] leading-[26px] font-semibold text-primary">
+              <h3 className="font-headline-md text-[18px] leading-[26px] font-semibold text-primary group-hover:text-primary-container transition-colors">
                 {industry.title}
               </h3>
               <p className="font-body-md text-body-md text-on-surface-variant flex-grow text-sm leading-relaxed">
                 {industry.desc}
               </p>
               <Link
-                href="/contact"
+                href={`/industries/${industry.id}`}
                 className="font-label-md text-label-md text-secondary-container flex items-center gap-2 hover:text-secondary transition-colors mt-auto w-fit"
-                aria-label={`Contact us about ${industry.title} workforce solutions`}
+                aria-label={`Explore workforce solutions for the ${industry.title} industry`}
               >
-                Get a Quote
+                Explore Capabilities
                 <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform" aria-hidden="true">
                   arrow_forward
                 </span>

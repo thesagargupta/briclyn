@@ -1,51 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { serviceCategories } from "@/lib/data/services";
 
-const services = [
-  {
-    icon: "construction",
-    title: "Construction Workforce",
-    desc: "Deploy certified, specialized construction personnel for infrastructure projects. From master builders to heavy machinery operators, we provide the backbone of your site execution.",
-    href: "/services#construction",
-  },
-  {
-    icon: "engineering",
-    title: "Engineering Staff",
-    desc: "Access top-tier structural, civil, and mechanical engineers. We embed technical experts directly into your workflow to ensure architectural integrity and regulatory compliance.",
-    href: "/services#engineering",
-  },
-  {
-    icon: "security",
-    title: "Security Services",
-    desc: "Robust perimeter control and asset protection for active sites. Our protocol-driven security teams minimize risk and maintain operational continuity 24/7.",
-    href: "/services#security",
-  },
-  {
-    icon: "business",
-    title: "Facility Management",
-    desc: "End-to-end lifecycle management of physical assets. We handle maintenance, compliance, and spatial optimization to maximize the longevity of your real estate investments.",
-    href: "/services#facility",
-  },
-  {
-    icon: "support_agent",
-    title: "HR Outsourcing",
-    desc: "Streamline industrial human resources. We manage payroll, complex compliance matrices, and workforce relations, allowing your leadership to focus on core operational output.",
-    href: "/services#hr",
-  },
-  {
-    icon: "precision_manufacturing",
-    title: "Industrial Workforce",
-    desc: "Scalable labor solutions for manufacturing and heavy industrial environments. We source and deploy rapid-response teams calibrated for high-efficiency production lines.",
-    href: "/services#industrial",
-  },
-];
-
-export default function ServicesPage() {
+export default function ServicesOverviewPage() {
   return (
     <div className="flex-1 w-full bg-background">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-10 lg:py-14">
         {/* Header Section */}
-        <div className="mb-10 max-w-[768px]">
+        <div className="mb-14 max-w-[768px]">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-highest text-primary font-label-sm text-label-sm rounded-full mb-4 border border-border-subtle">
             <span className="w-2 h-2 rounded-full bg-secondary-container" aria-hidden="true" />
             Enterprise Capabilities
@@ -54,40 +16,41 @@ export default function ServicesPage() {
             Industrial &amp; Infrastructure Services
           </h1>
           <p className="font-body-lg text-body-lg text-on-surface-variant">
-            Comprehensive workforce and engineering solutions designed for high-stakes, large-scale structural projects. Precision deployed, reliably managed.
+            Comprehensive workforce and engineering solutions designed for high-stakes, large-scale structural projects. Explore our categories to see the specific roles we deploy.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-          {services.map((service, index) => (
+        {/* Categories Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {serviceCategories.map((category) => (
             <div
-              key={index}
-              id={service.href.split("#")[1]}
-              className="bg-surface-main rounded-xl border border-border-subtle p-6 shadow-[0_4px_24px_-4px_rgba(11,53,83,0.05)] hover:shadow-[0_12px_32px_-4px_rgba(11,53,83,0.08)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col group relative overflow-hidden"
+              key={category.id}
+              className="bg-surface-main rounded-xl border border-border-subtle p-6 shadow-[0_2px_12px_-4px_rgba(11,53,83,0.04)] hover:shadow-[0_8px_24px_-4px_rgba(11,53,83,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col group"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-[100px] -z-10 group-hover:scale-110 transition-transform duration-500" aria-hidden="true" />
-              <div className="w-12 h-12 bg-surface-container-highest text-primary-container rounded-lg flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined text-[24px]" aria-hidden="true">
-                  {service.icon}
+              <div className="h-14 w-14 bg-surface-alt shadow-sm border border-border-subtle text-primary-container rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#D95B0D]/10 group-hover:text-[#D95B0D] group-hover:border-[#D95B0D]/20 transition-colors">
+                <span className="material-symbols-outlined text-[28px]" aria-hidden="true">
+                  {category.icon}
                 </span>
               </div>
-              <h2 className="font-headline-md text-[18px] leading-[26px] font-semibold text-on-surface mb-3">
-                {service.title}
+              <h2 className="font-headline-lg text-[22px] font-bold text-primary mb-3 group-hover:text-primary-container transition-colors">
+                {category.title}
               </h2>
-              <p className="font-body-md text-body-md text-on-surface-variant flex-1 mb-6 text-sm leading-relaxed">
-                {service.desc}
+              <p className="font-body-md text-on-surface-variant mb-8 flex-1 leading-relaxed">
+                {category.desc}
               </p>
+              
               <div className="mt-auto pt-4 border-t border-border-subtle">
                 <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 font-label-md text-label-md text-primary group-hover:text-secondary-container transition-colors"
-                  aria-label={`Request ${service.title} consultation`}
+                  href={`/services/${category.id}`}
+                  className="inline-flex items-center gap-2 font-label-md text-label-md text-primary group-hover:text-secondary-container transition-colors w-full justify-between"
+                  aria-label={`Explore ${category.title} capabilities`}
                 >
                   Explore Capabilities
-                  <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform" aria-hidden="true">
-                    arrow_forward
-                  </span>
+                  <div className="w-8 h-8 rounded-full bg-surface-alt group-hover:bg-secondary-fixed flex items-center justify-center transition-colors">
+                    <span className="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform" aria-hidden="true">
+                      arrow_forward
+                    </span>
+                  </div>
                 </Link>
               </div>
             </div>
@@ -95,7 +58,7 @@ export default function ServicesPage() {
         </div>
 
         {/* Bottom Call to Action */}
-        <div className="bg-primary-container rounded-xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative">
+        <div className="bg-primary-container rounded-xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative shadow-md">
           <div
             className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
             style={{
@@ -113,7 +76,7 @@ export default function ServicesPage() {
             </p>
           </div>
           <div className="relative z-10 shrink-0">
-            <Button href="/contact" variant="secondary">
+            <Button href="/contact" variant="secondary" className="shadow-lg hover:-translate-y-0.5 transition-transform">
               Request Consultation
               <span className="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_outward</span>
             </Button>

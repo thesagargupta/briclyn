@@ -21,7 +21,7 @@ export function Navbar() {
       {/* FIX 1: Replaced `py-3` with a fixed height `h-[72px]` to lock navbar size */}
       <div className="max-w-[1280px] mx-auto flex justify-between items-center px-6 lg:px-8 h-[72px]">
 
-        <div className="relative h-20 w-30 sm:h-24 sm:w-24 md:h-32 md:w-32 shrink-0 overflow-hidden flex items-center justify-center">
+        <div className="relative h-20 w-33 sm:h-24 sm:w-24 md:h-32 md:w-32 shrink-0 overflow-hidden flex items-center justify-center">
           {/* Image: Scaled up to remove whitespace */}
           <Link href="/" aria-label="BrickLyn home">
           <img

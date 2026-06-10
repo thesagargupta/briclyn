@@ -124,21 +124,25 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               {
+                id: "construction",
                 icon: "construction",
                 title: "Construction Workforce",
                 desc: "Skilled masons, carpenters, bar benders, and general helpers for large-scale building projects.",
               },
               {
+                id: "engineering",
                 icon: "engineering",
                 title: "Engineering Staff",
                 desc: "Qualified site engineers, supervisors, and technical experts to oversee project execution.",
               },
               {
+                id: "security",
                 icon: "security",
                 title: "Security Services",
                 desc: "Trained security personnel for site protection, asset guarding, and access control.",
               },
               {
+                id: "facility",
                 icon: "domain",
                 title: "Facility Management",
                 desc: "Comprehensive maintenance, cleaning, and operational support for commercial properties.",
@@ -152,7 +156,7 @@ export default function HomePage() {
                   <h3 className="font-headline-md text-[17px] leading-[26px] font-semibold text-on-surface mb-2">{service.title}</h3>
                   <p className="font-body-md text-body-md text-on-surface-variant mb-5 text-sm leading-relaxed flex-1">{service.desc}</p>
                   <Link
-                    href="/services"
+                    href={`/services/${service.id}`}
                     className="inline-flex items-center gap-1 font-label-md text-label-md text-[#D95B0D] hover:text-[#c4520b] transition-colors group/link"
                     aria-label={`Learn more about ${service.title}`}
                   >
@@ -183,20 +187,20 @@ export default function HomePage() {
           </FadeIn>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
-              { icon: "apartment",        title: "Construction" },
-              { icon: "foundation",       title: "Infrastructure" },
-              { icon: "factory",          title: "Manufacturing" },
-              { icon: "warehouse",        title: "Warehousing" },
-              { icon: "local_shipping",   title: "Logistics" },
-              { icon: "medical_services", title: "Healthcare" },
+              { id: "construction", icon: "apartment",        title: "Construction" },
+              { id: "infrastructure", icon: "foundation",       title: "Infrastructure" },
+              { id: "manufacturing", icon: "factory",          title: "Manufacturing" },
+              { id: "warehousing", icon: "warehouse",        title: "Warehousing" },
+              { id: "logistics", icon: "local_shipping",   title: "Logistics" },
+              { id: "healthcare", icon: "medical_services", title: "Healthcare" },
             ].map((industry, index) => (
               <FadeIn key={index} delay={index * 70}>
                 <Link
-                  href="/industries"
-                  className="block h-full bg-surface-main p-5 rounded-xl border border-border-subtle hover:border-secondary-container hover:shadow-sm transition-all group cursor-pointer text-center"
+                  href={`/industries/${industry.id}`}
+                  className="block h-full bg-surface-main p-5 rounded-xl border border-border-subtle hover:bg-surface-alt hover:shadow-sm hover:-translate-y-1 transition-all group cursor-pointer text-center"
                   aria-label={`${industry.title} industry`}
                 >
-                  <span className="material-symbols-outlined text-3xl text-secondary mb-3 block" aria-hidden="true">{industry.icon}</span>
+                  <span className="material-symbols-outlined text-3xl text-secondary mb-3 block group-hover:scale-110 transition-transform" aria-hidden="true">{industry.icon}</span>
                   <h3 className="font-label-md text-label-md text-on-surface group-hover:text-primary-container transition-colors">{industry.title}</h3>
                 </Link>
               </FadeIn>
